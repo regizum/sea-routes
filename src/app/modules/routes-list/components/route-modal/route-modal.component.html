@@ -1,0 +1,49 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">
+    {{ route.route_id }}. {{ route.from_port }}
+    <i class="fa-solid fa-arrow-right"></i>
+    {{ route.to_port }}
+  </h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-describedby="modal-title"
+    (click)="modal.dismiss()"
+  ></button>
+</div>
+<div class="modal-body">
+  <div class="row mb-4">
+    <div class="col">
+      <widget
+        [subtitle]="'Max Speed'"
+        [title]="maxSpeed + ''"
+        [iconClasses]="'fa-solid fa-arrow-up'"
+      ></widget>
+    </div>
+    <div class="col">
+      <widget
+        [subtitle]="'Average Speed'"
+        [title]="avgSpeed + ''"
+        [iconClasses]="'fa-solid fa-chart-line'"
+      ></widget>
+    </div>
+    <div class="col">
+      <widget
+        [subtitle]="'Date'"
+        [title]="date"
+        [iconClasses]="'fa-regular fa-calendar'"
+      ></widget>
+    </div>
+  </div>
+
+  <div style="height: 400px">
+    <canvas
+      baseChart
+      [type]="'line'"
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [legend]="lineChartLegend"
+    >
+    </canvas>
+  </div>
+</div>

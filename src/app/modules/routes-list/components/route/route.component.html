@@ -1,0 +1,50 @@
+<div class="ms-2 me-auto">
+  <div class="fw-bold">
+    {{ route.route_id }}.
+    <span ngbTooltip="Route origin">{{ route.from_port }}</span
+    >&nbsp; <i class="fa-solid fa-arrow-right"></i>&nbsp;
+    <span ngbTooltip="Route destination">{{ route.to_port }}</span>
+  </div>
+  <div class="text-body-tertiary">
+    <small
+      ><span ngbTooltip="Trip duration in milliseconds"
+        ><i class="fa-regular fa-clock"></i> {{ route.leg_duration }}</span
+      >&nbsp;•&nbsp;<span ngbTooltip="Number of vessel observations from GPS"
+        ><i class="fa-solid fa-route"></i> {{ route.points.length }}</span
+      ></small
+    >
+  </div>
+</div>
+<div ngbDropdown class="d-inline-block">
+  <button
+    type="button"
+    class="btn btn-light"
+    id="dropdownBasic1"
+    ngbDropdownToggle
+    (click)="$event.preventDefault(); $event.stopPropagation()"
+  >
+    <i class="fa-solid fa-ellipsis-vertical"></i>
+  </button>
+  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <button
+      ngbDropdownItem
+      (click)="$event.preventDefault(); $event.stopPropagation(); openModal()"
+    >
+      <span class="dropdown-menu-icon"
+        ><i class="fa-solid fa-chart-column"></i></span
+      >Show chart
+    </button>
+    <div class="dropdown-divider"></div>
+    <button
+      ngbDropdownItem
+      class="text-danger"
+      (click)="
+        $event.preventDefault(); $event.stopPropagation(); onDelete.emit(route)
+      "
+    >
+      <span class="dropdown-menu-icon"
+        ><i class="fa-regular fa-trash-can"></i></span
+      >Delete
+    </button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<p>Let's get started! Choose the file to import the data</p>
+<input
+  #fileUploadSimple
+  [accept]="'.csv'"
+  type="file"
+  class="file-input"
+  (change)="importDataFromUploadedFile($event)"
+  hidden="true"
+/>
+<button class="btn btn-primary mb-3" (click)="fileUploadSimple.click()">
+  <i class="fa-solid fa-download"></i> Import from csv
+</button>
+<button
+  class="btn btn-outline-secondary"
+  (click)="importDataFromPreloadedFile()"
+>
+  <i class="fa-regular fa-file"></i> Import web_challenge.csv
+</button>

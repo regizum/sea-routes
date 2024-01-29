@@ -1,0 +1,36 @@
+<main class="layout">
+  <div class="layout-canvas">
+    <h1 class="h3 layout-title">
+      <i class="fa-solid fa-route"></i> Routes App
+    </h1>
+    <div [hidden]="loading">
+      <csv-importer
+        *ngIf="!routes.length || loading"
+        [fileSrc]="'assets/web_challenge.csv'"
+        (onDataImport)="onDataImport($event)"
+        (onLoadStart)="onLoadStart()"
+        (onLoadEnd)="onLoadEnd()"
+      ></csv-importer>
+
+      <div *ngIf="routes.length && !loading">
+        <button
+          type="button"
+          class="btn btn-outline-danger mb-4"
+          (click)="deleteAllData()"
+        >
+          <i class="fa-regular fa-trash-can"></i> Delete all data
+        </button>
+        <routes-list
+          [routesList]="routes"
+          (onSelectRoute)="onSelectRoute($event)"
+        ></routes-list>
+      </div>
+    </div>
+    <div [hidden]="!loading" class="fa-3x text-center mt-4">
+      <i class="fa-solid fa-spinner fa-spin"></i>
+    </div>
+  </div>
+  <div class="layout-map">
+    <g-map [route]="selectedRoute"></g-map>
+  </div>
+</main>
