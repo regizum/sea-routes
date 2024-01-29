@@ -1,0 +1,21 @@
+.list-group {
+  &-splitted {
+    .list-group-item {
+      padding: var(--#{$prefix}list-group-item-padding-x);
+      margin-bottom: $spacer;
+      border: 1px solid var(--#{$prefix}list-group-border-color);
+
+      &,
+      &:first-child,
+      &:last-child {
+        @include border-radius(var(--#{$prefix}list-group-border-radius));
+      }
+
+      &.active {
+        background-color: var(--#{$prefix}list-group-bg);
+        border-color: $primary;
+        color: var(--#{$prefix}list-group-color);
+      }
+    }
+  }
+}

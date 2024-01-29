@@ -1,0 +1,31 @@
+.widget {
+  display: flex;
+  align-items: center;
+
+  &-icon {
+    $size: 4rem;
+
+    height: $size;
+    width: $size;
+    line-height: $size;
+    text-align: center;
+    font-size: $h3-font-size;
+    border-radius: $border-radius-lg;
+    margin-right: 1rem;
+
+    @each $color, $value in $theme-colors {
+      &-#{$color} {
+        color: var(--#{$prefix}#{$color}-text-emphasis);
+        background-color: var(--#{$prefix}#{$color}-bg-subtle);
+      }
+    }
+  }
+
+  &-title {
+  }
+
+  &-subtitle {
+    color: $gray-500;
+    font-size: $font-size-sm;
+  }
+}
